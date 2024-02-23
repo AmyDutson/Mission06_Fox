@@ -33,6 +33,10 @@
                 <td>@x.IsEdited</td>
                 <td>@x.LentTo</td>
                 <td>@x.Notes</td>
+
+                <td><a class="btn btn-info" asp-controller="Home" asp-action="Edit" asp-route-id="@x.SubmissionID">Edit</a></td>
+                <td><a class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-id="@x.SubmissionID">Delete</a></td>
+
             </tr>
         </tbody>
     }
