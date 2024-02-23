@@ -1,5 +1,6 @@
 using FilmCollection.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace FilmCollection.Controllers
@@ -30,21 +31,33 @@ namespace FilmCollection.Controllers
             ViewBag.Categories = _context.Categories
                 .ToList();
 
-            return View();
+            return View("Form", new Submission());
         }
 
         [HttpPost]
         public IActionResult Form(Submission response)
         {
-            _context.Submissions.Add(response);
-            _context.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                _context.Submissions.Add(response);
+                _context.SaveChanges();
             
-            return View("Confirmation", response);
+                return View("Confirmation", response);
+            }
+            else
+            {
+                ViewBag.Categories = _context.Categories
+                    .ToList();
+
+                return View(response);
+            }
+            
         }
 
         public IActionResult MovieList ()
         {
             var submissions = _context.Submissions
+                .Include(x => x.Category)
                 .OrderBy(x => x.Title).ToList();
 
             return View(submissions);

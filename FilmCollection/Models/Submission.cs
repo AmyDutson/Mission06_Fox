@@ -11,29 +11,30 @@ namespace FilmCollection.Models
         public int SubmissionId { get; set; }
 
         [ForeignKey("CategoryId")]
-        public int CategoryId { get; set; }
-        public Category Category { get; set; }
+        public int ? CategoryId { get; set; }
+        public Category ? Category { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter a Title")]
         public string Title { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please enter a year")]
+        [Range(1888, int.MaxValue, ErrorMessage = "The year must be 1888 or higher")]
         public int Year { get; set; }
 
-        public string Director { get; set; }
+        public string ? Director { get; set; }
 
-        public string Rating { get; set; }
+        public string ? Rating { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please indicate if it was edited")]
         public int Edited { get; set; }
 
-        public string LentTo { get; set; }
+        public string ? LentTo { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please indicate if it was copied to plex")]
         public int CopiedToPlex { get; set; }
 
         [StringLength(25)]
-        public string Notes { get; set; }
+        public string ? Notes { get; set; }
 
     }
 }
