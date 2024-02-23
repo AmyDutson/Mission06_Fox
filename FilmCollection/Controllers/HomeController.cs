@@ -37,5 +37,13 @@ namespace FilmCollection.Controllers
             
             return View("Confirmation", response);
         }
+
+        public IActionResult MovieList ()
+        {
+            var submissions = _context.Submissions
+                .OrderBy(x => x.Title).ToList();
+
+            return View(submissions);
+        }
     }
 }
