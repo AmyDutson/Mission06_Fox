@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FilmCollection.Models
 {
@@ -9,8 +10,9 @@ namespace FilmCollection.Models
         [Required]
         public int SubmissionID { get; set; }
 
-        [Required]
-        public string Category { get; set; }
+        [ForeignKey("CategoryId")]
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
 
         [Required]
         public string Title { get; set; }

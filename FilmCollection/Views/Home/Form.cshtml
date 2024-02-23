@@ -11,6 +11,14 @@
 
     <label asp-for="Category">Category:</label>
     <input asp-for="Category" required>
+    <select asp-for="CategoryId">
+        <option value="">Select a Category</option>
+        @foreach (Category c in ViewBag.Categories)
+        {
+            <option value="@c.CategoryId">@c.CategoryName</option>
+        }
+
+    </select>
     <br><br>
 
     <label asp-for="Title">Movie Title:</label>

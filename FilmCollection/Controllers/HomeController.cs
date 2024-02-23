@@ -26,6 +26,10 @@ namespace FilmCollection.Controllers
         [HttpGet]
         public IActionResult Form()
         {
+            
+            ViewBag.Categories = _context.Categories
+                .ToList();
+
             return View();
         }
 
