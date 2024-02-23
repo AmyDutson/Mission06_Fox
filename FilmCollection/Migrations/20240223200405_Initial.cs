@@ -7,7 +7,7 @@
 namespace FilmCollection.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -29,20 +29,21 @@ namespace FilmCollection.Migrations
                 name: "Submissions",
                 columns: table => new
                 {
-                    SubmissionID = table.Column<int>(type: "INTEGER", nullable: false)
+                    SubmissionId = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     CategoryId = table.Column<int>(type: "INTEGER", nullable: false),
                     Title = table.Column<string>(type: "TEXT", nullable: false),
                     Year = table.Column<int>(type: "INTEGER", nullable: false),
                     Director = table.Column<string>(type: "TEXT", nullable: false),
                     Rating = table.Column<string>(type: "TEXT", nullable: false),
-                    IsEdited = table.Column<bool>(type: "INTEGER", nullable: false),
+                    Edited = table.Column<int>(type: "INTEGER", nullable: false),
                     LentTo = table.Column<string>(type: "TEXT", nullable: false),
+                    CopiedToPlex = table.Column<int>(type: "INTEGER", nullable: false),
                     Notes = table.Column<string>(type: "TEXT", maxLength: 25, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Submissions", x => x.SubmissionID);
+                    table.PrimaryKey("PK_Submissions", x => x.SubmissionId);
                     table.ForeignKey(
                         name: "FK_Submissions_Categories_CategoryId",
                         column: x => x.CategoryId,

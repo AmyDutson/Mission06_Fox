@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FilmCollection.Migrations
 {
     [DbContext(typeof(MovieSubmissionContext))]
-    [Migration("20240223194239_initial")]
-    partial class initial
+    [Migration("20240223200405_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -78,18 +78,21 @@ namespace FilmCollection.Migrations
 
             modelBuilder.Entity("FilmCollection.Models.Submission", b =>
                 {
-                    b.Property<int>("SubmissionID")
+                    b.Property<int>("SubmissionId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("CopiedToPlex")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Director")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("IsEdited")
+                    b.Property<int>("Edited")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("LentTo")
@@ -112,7 +115,7 @@ namespace FilmCollection.Migrations
                     b.Property<int>("Year")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("SubmissionID");
+                    b.HasKey("SubmissionId");
 
                     b.HasIndex("CategoryId");
 

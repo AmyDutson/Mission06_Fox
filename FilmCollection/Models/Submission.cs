@@ -8,7 +8,7 @@ namespace FilmCollection.Models
     {
         [Key]
         [Required]
-        public int SubmissionID { get; set; }
+        public int SubmissionId { get; set; }
 
         [ForeignKey("CategoryId")]
         public int CategoryId { get; set; }
@@ -20,15 +20,17 @@ namespace FilmCollection.Models
         [Required]
         public int Year { get; set; }
 
-        [Required]
         public string Director { get; set; }
 
-        [Required]
         public string Rating { get; set; }
 
-        public bool IsEdited { get; set; }
+        [Required]
+        public int Edited { get; set; }
 
         public string LentTo { get; set; }
+
+        [Required]
+        public int CopiedToPlex { get; set; }
 
         [StringLength(25)]
         public string Notes { get; set; }

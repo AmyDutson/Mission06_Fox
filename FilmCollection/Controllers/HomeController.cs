@@ -54,7 +54,7 @@ namespace FilmCollection.Controllers
         public IActionResult Edit (int id)
         {
             var recordToEdit = _context.Submissions
-                .Single(x => x.SubmissionID == id);
+                .Single(x => x.SubmissionId == id);
 
             return View("Form", recordToEdit);
         }
@@ -72,7 +72,7 @@ namespace FilmCollection.Controllers
         public IActionResult Delete(int id)
         {
             var recordToDelete = _context.Submissions
-                .Single(x => x.SubmissionID == id);
+                .Single(x => x.SubmissionId == id);
 
             return View(recordToDelete);
         }
