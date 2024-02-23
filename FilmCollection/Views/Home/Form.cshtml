@@ -2,13 +2,13 @@
     ViewData["Title"] = "Form";
 }
 
-@model Submission
+@model Movie
 
 <h1>Add a movie to the collection!</h1>
 <br />
 
 <form method="post">
-    <input type="hidden" asp-for="SubmissionId" />
+    <input type="hidden" asp-for="MovieId" />
 
     <label asp-for="Category">Category:</label>
     <select asp-for="CategoryId">

@@ -31,15 +31,15 @@ namespace FilmCollection.Controllers
             ViewBag.Categories = _context.Categories
                 .ToList();
 
-            return View("Form", new Submission());
+            return View("Form", new Movie());
         }
 
         [HttpPost]
-        public IActionResult Form(Submission response)
+        public IActionResult Form(Movie response)
         {
             if (ModelState.IsValid)
             {
-                _context.Submissions.Add(response);
+                _context.Movies.Add(response);
                 _context.SaveChanges();
             
                 return View("Confirmation", response);
@@ -56,7 +56,7 @@ namespace FilmCollection.Controllers
 
         public IActionResult MovieList ()
         {
-            var submissions = _context.Submissions
+            var submissions = _context.Movies
                 .Include(x => x.Category)
                 .OrderBy(x => x.Title).ToList();
 
@@ -66,14 +66,14 @@ namespace FilmCollection.Controllers
         [HttpGet]
         public IActionResult Edit (int id)
         {
-            var recordToEdit = _context.Submissions
-                .Single(x => x.SubmissionId == id);
+            var recordToEdit = _context.Movies
+                .Single(x => x.MovieId == id);
 
             return View("Form", recordToEdit);
         }
 
         [HttpPost]
-        public IActionResult Edit (Submission updatedInfo) 
+        public IActionResult Edit (Movie updatedInfo) 
         {
             _context.Update(updatedInfo);
             _context.SaveChanges(); 
@@ -84,16 +84,16 @@ namespace FilmCollection.Controllers
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var recordToDelete = _context.Submissions
-                .Single(x => x.SubmissionId == id);
+            var recordToDelete = _context.Movies
+                .Single(x => x.MovieId == id);
 
             return View(recordToDelete);
         }
 
         [HttpPost]
-        public IActionResult Delete(Submission submission)
+        public IActionResult Delete(Movie submission)
         {
-            _context.Submissions.Remove(submission);
+            _context.Movies.Remove(submission);
             _context.SaveChanges();
 
             return RedirectToAction("MovieList");

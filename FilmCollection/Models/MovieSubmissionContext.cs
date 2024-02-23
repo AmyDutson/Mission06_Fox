@@ -8,7 +8,7 @@ namespace FilmCollection.Models
         { 
         }
 
-        public DbSet<Submission> Submissions { get; set; }
+        public DbSet<Movie> Movies { get; set; }
 
         public DbSet<Category> Categories { get; set; }
 

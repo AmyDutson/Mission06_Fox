@@ -4,12 +4,12 @@
 @{
 }
 
-@model Submission
+@model Movie
 
 <h2>Are you sure you want to delete @Model.Title?</h2>
 
 <form method="post">
-    <input type="hidden" asp-for="SubmissionId"/>
+    <input type="hidden" asp-for="MovieId"/>
 
     <button type="submit">Delete</button>
     <a class="btn btn-info" asp-controller="Home" asp-action="MovieList">Cancel</a>

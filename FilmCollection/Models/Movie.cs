@@ -4,11 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FilmCollection.Models
 {
-    public class Submission
+    public class Movie
     {
         [Key]
         [Required]
-        public int SubmissionId { get; set; }
+        public int MovieId { get; set; }
 
         [ForeignKey("CategoryId")]
         public int ? CategoryId { get; set; }
