@@ -10,7 +10,7 @@ namespace FilmCollection.Models
         [Required]
         public int MovieId { get; set; }
 
-        [ForeignKey("CategoryId")]
+        // [ForeignKey("CategoryId")]
         public int ? CategoryId { get; set; }
         public Category ? Category { get; set; }
 

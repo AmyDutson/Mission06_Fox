@@ -39,6 +39,9 @@ namespace FilmCollection.Controllers
         {
             if (ModelState.IsValid)
             {
+                ViewBag.Categories = _context.Categories
+                    .ToList();
+
                 _context.Movies.Add(response);
                 _context.SaveChanges();
             
@@ -66,6 +69,9 @@ namespace FilmCollection.Controllers
         [HttpGet]
         public IActionResult Edit (int id)
         {
+            ViewBag.Categories = _context.Categories
+                    .ToList();
+
             var recordToEdit = _context.Movies
                 .Single(x => x.MovieId == id);
 
